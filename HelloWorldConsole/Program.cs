@@ -17,21 +17,9 @@ namespace HelloWorldConsole
                 var whereToWriteMessage = ConfigurationManager.AppSettings["WriteMessageTo"];
                 Enum.TryParse<WhereToWrite>(whereToWriteMessage, out var parsedValue);
 
-                switch (parsedValue)
-                {
-                    case WhereToWrite.DataBase:
-                        IDbWriter _dbWriter = Factory.Create<DbWriter>();
-                        if (_dbWriter.ValidateConnectionString() == true) WriteMessage(_dbWriter, message);
-                        break;
-                    case WhereToWrite.Console:
-                        IConsoleWriter _consoleWriter = Factory.Create<ConsoleWriter>();
-                        WriteMessage(_consoleWriter, message);
-                        break;
-                    default:
-                        Console.WriteLine("WhereToWrite Configuration Not specified");
-                        break;
-
-                }
+                IConsoleWriter _consoleWriter = Factory.Create<ConsoleWriter>();
+                WriteMessage(_consoleWriter, message);
+                   
             }
             catch(Exception ex)
             {

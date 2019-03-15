@@ -17,24 +17,11 @@ namespace HelloWordSample.Tests
             Assert.IsTrue(!string.IsNullOrEmpty(whereToWriteMessage));
 
             Enum.TryParse<WhereToWrite>(whereToWriteMessage, out var parsedValue);
-            Assert.IsTrue(parsedValue != WhereToWrite.NotSpecified);
+            Assert.IsTrue(parsedValue == WhereToWrite.Console);
 
-            switch (parsedValue)
-            {
-                case WhereToWrite.DataBase :
-                    IDbWriter _dbWriter = Factory.Create<DbWriter>();
-                    Assert.IsTrue(_dbWriter.ValidateConnectionString() == true);
-                    Assert.IsTrue(_dbWriter.Write(message) == true);
-                    break;
-                case WhereToWrite.Console:
-                    IConsoleWriter _consoleWriter = Factory.Create<ConsoleWriter>();
-                    Assert.IsTrue(_consoleWriter.Write(message) == true);
-                    break;
-                default:
-                    Console.WriteLine("WhereToWrite Configuration Not specified");
-                    break;
-
-            }           
+        
+            IConsoleWriter _consoleWriter = Factory.Create<ConsoleWriter>();
+            Assert.IsTrue(_consoleWriter.Write(message) == true);                                         
         }
     }
 }
