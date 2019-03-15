@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs/HelloWorldSample/v15/Server/sqlite3
+/.vs/HelloWorldSample/v15/.suo
+/HelloWordSample.Tests/bin/Debug
+/HelloWordSample.Tests/obj/Debug
+/HelloWorldConsole/bin/Debug
+/HelloWorldConsole/obj/Debug
+/HelloWorldSample/bin/Debug
+/HelloWorldSample/obj/Debug
+/packages
